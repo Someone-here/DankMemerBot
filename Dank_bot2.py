@@ -1,35 +1,31 @@
 from selenium import webdriver
-import keyboard as kb
-from time import sleep
 from selenium.webdriver.chrome.options import Options
-import pyautogui as pt
-import sys
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from time import sleep
+email = input("Enter discord email: ")
+password = input("Enter discord password: ")
+commands = ["Pls beg", "Pls postmeme", "k", "pls fish", "pls hunt", "pls deposit max"]
 
-#first 4 lines just open chrome
-chrome_options = Options()
-chrome_options.add_argument("user-data-dir=selenium") 
-driver = webdriver.Chrome(chrome_options=chrome_options)
-driver.get('https://discord.com/app')
+driver = webdriver.Chrome()
+driver.get("https://discord.com/channels/790528455585431582/790528455585431585")
 
-#Varaibles and lists
-bot_start = False
-commands = ['pls beg', 'pls postmeme', 'k', 'pls hunt', 'pls fish', 'pls deposit max']
-#to determine when to start bot
-while bot_start == False:
-    if kb.is_pressed('ctrl'):
-        bot_start = True
-sleep(1)
-
-#To execute the comands
+email = driver.find_element_by_name("email")
+email.send_keys(email)
+password = driver.find_element_by_name("password")
+password.send_keys(password)
+password.send_keys(Keys.RETURN)
+try:
+    element = WebDriverWait(driver, 20).until(
+        EC.presence_of_element_located((By.XPATH, '//*[@id="app-mount"]/div[2]/div/div[2]/div/div/div/div/div[2]/div/main/form/div/div/div/div/div[3]/div[2]'))
+    )
+except:
+    driver.quit()
+    
 while True:
-    abc = 0
-    for command in commands:
-        pt.typewrite(command, interval=0.1)
-        pt.typewrite('\n')
-        sleep(1)
-    while abc <= 60:
-        sleep(0.01)
-        if kb.is_pressed('z'):
-            driver.quit()
-            sys.exit()
-        abc += 0.01
+    for i in commands:
+            element.send_keys(i + "\n")
+            sleep(1)
+    sleep(60)
