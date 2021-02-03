@@ -12,5 +12,5 @@ There are two versions of the bot.
 The first one uses coordinates so it will only work on some screens and the coords will have to be changed for other screens.
 And it also has the logic of gambling coins if above a certain amount.
 
-The second one uses selenium to access discord directly from the web, then waits for the user to press the control key and then sends the commands to the DankMemer bot.
+The second one uses selenium to access discord directly from the web, and then sends the commands to the DankMemer bot.
 It does not have the gambling logic as it doesn't keep track of coins.
