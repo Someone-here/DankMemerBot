@@ -8,9 +8,10 @@ from time import sleep
 email = input("Enter discord email: ")
 password = input("Enter discord password: ")
 commands = ["Pls beg", "Pls postmeme", "k", "pls fish", "pls hunt", "pls deposit max"]
+url = input("Enter the channel url")
 
 driver = webdriver.Chrome()
-driver.get("https://discord.com/channels/790528455585431582/790528455585431585")
+driver.get(url)
 
 email = driver.find_element_by_name("email")
 email.send_keys(email)
