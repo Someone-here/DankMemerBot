@@ -5,8 +5,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
-email = input("Enter discord email: ")
-password = input("Enter discord password: ")
+em = input("Enter discord email: ")
+pas = input("Enter discord password: ")
 commands = ["Pls beg", "Pls postmeme", "k", "pls fish", "pls hunt", "pls deposit max"]
 url = input("Enter the channel url")
 
@@ -14,9 +14,9 @@ driver = webdriver.Chrome()
 driver.get(url)
 
 email = driver.find_element_by_name("email")
-email.send_keys(email)
+email.send_keys(em)
 password = driver.find_element_by_name("password")
-password.send_keys(password)
+password.send_keys(pas)
 password.send_keys(Keys.RETURN)
 try:
     element = WebDriverWait(driver, 20).until(
